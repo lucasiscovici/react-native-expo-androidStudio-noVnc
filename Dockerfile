@@ -75,7 +75,7 @@ RUN $INST_SCRIPTS/no_vnc.sh
 
 ### Install firefox and chrome browser
 RUN $INST_SCRIPTS/firefox.sh
-RUN apt-get install -y lxd lxd-cl
+RUN apt-get install -y lxd
 RUN dpkg --force depends -P lxd 
 RUN dpkg --force depends -P lxd-client 
 RUN apt-get upgrade -y
