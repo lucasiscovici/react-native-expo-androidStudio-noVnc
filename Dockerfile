@@ -4,10 +4,10 @@ ENV REFRESHED_AT 2019-01-11
 # Switch to root user to install additional software
 
 ENV USERNAME dev
-USER $USERNAME
-
 RUN groupadd --gid 1000 node \
-  && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
+  && useradd --gid node -rm -d /home/dev -s /bin/bash -g root -G sudo -u 1005 ${USERNAME}
+
+USER $USERNAME
 
 ENV NODE_VERSION 12.13.1
 
@@ -72,7 +72,6 @@ RUN set -ex \
 
 LABEL version=1.0.0
 
-RUN useradd -rm -d /home/dev -s /bin/bash -g root -G sudo -u 1005 ${USERNAME}
 
 EXPOSE 19000
 EXPOSE 19001
