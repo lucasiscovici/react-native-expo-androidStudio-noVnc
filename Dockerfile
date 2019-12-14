@@ -7,7 +7,7 @@ ENV USERNAME dev
 RUN groupadd --gid 1000 node \
   && useradd --gid node -rm -d /home/dev -s /bin/bash -g root -u 1005 ${USERNAME}
 
-RUN apt-get update && apt-get install -y nodejs npm nodejs-legacy
+RUN apt-get update && apt-get install -y nodejs npm
 
 
 EXPOSE 8080
