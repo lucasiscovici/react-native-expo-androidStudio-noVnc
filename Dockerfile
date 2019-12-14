@@ -19,7 +19,7 @@ EXPOSE 19000
 EXPOSE 19001
 EXPOSE 19002
 
-RUN apt update && yum install -y \
+RUN yum install -y \
     git \
     procps
 
@@ -41,9 +41,6 @@ RUN mkdir -p ~/src \
 #append the .npm-global to path, other wise globally installed packages 
 #will not be available in bash
 ENV PATH="/home/$USERNAME/.npm-global:/home/$USERNAME/.npm-global/bin:${PATH}"
-
-RUN dpkg --add-architecture i386
-RUN apt-get update
 
 # Download specific Android Studio bundle (all packages).
 RUN yum install -y curl unzip
