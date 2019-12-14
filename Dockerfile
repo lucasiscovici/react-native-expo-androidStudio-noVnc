@@ -7,12 +7,11 @@ ENV USERNAME dev
 RUN groupadd --gid 1000 node \
   && useradd --gid node -rm -d /home/dev -s /bin/bash -g root -u 1005 ${USERNAME}
 
-USER $USERNAME
-
-
 RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all
 RUN yum -y install nodejs npm; yum clean all
+
+USER $USERNAME
 
 EXPOSE 8080
 EXPOSE 19000
