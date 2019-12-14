@@ -1,4 +1,4 @@
-FROM consol/centos-xfce-vnc
+FROM consol/ubuntu-xfce-vnc
 ENV REFRESHED_AT 2019-01-11
 
 # Switch to root user to install additional software
@@ -7,11 +7,7 @@ ENV USERNAME dev
 RUN groupadd --gid 1000 node \
   && useradd --gid node -rm -d /home/dev -s /bin/bash -g root -u 1005 ${USERNAME}
 
-RUN yum update --disablerepo=\* --enablerepo=updates centos-release 
-RUN yum -y update; yum clean all
-RUN yum -y install epel-release; yum clean all
-RUN yum -y install nodejs npm; yum clean all
-
+RUN apt-get update && apt-get install nodejs npm && apt install nodejs-legacy
 
 
 EXPOSE 8080
@@ -19,7 +15,7 @@ EXPOSE 19000
 EXPOSE 19001
 EXPOSE 19002
 
-RUN yum install -y \
+RUN apt-get install -y \
     git \
     procps
 
@@ -43,27 +39,27 @@ RUN mkdir -p ~/src \
 ENV PATH="/home/$USERNAME/.npm-global:/home/$USERNAME/.npm-global/bin:${PATH}"
 
 # Download specific Android Studio bundle (all packages).
-RUN yum install -y curl unzip
+RUN apt-get install -y curl unzip
 
 RUN curl 'https://uit.fun/repo/android-studio-ide-183.5522156-linux.zip' > /tmp/studio.zip && unzip -d /opt /tmp/studio.zip && rm /tmp/studio.zip
 
 # Install X11
 ENV DEBIAN_FRONTEND=noninteractive
-RUN yum install -y xorg
+RUN apt-get install -y xorg
 
 
 # Install other useful tools
-RUN yum install -y vim ant
+RUN apt-get install -y vim ant
 
 # install Java
-RUN yum install -y default-jdk
+RUN apt-get install -y default-jdk
 
 # Install prerequisites
-RUN yum install -y libz1 libncurses5 libbz2-1.0:i386 libstdc++6 libbz2-1.0 lib32stdc++6 lib32z1
+RUN apt-get install -y libz1 libncurses5 libbz2-1.0:i386 libstdc++6 libbz2-1.0 lib32stdc++6 lib32z1
 
 
 # Clean up
-RUN yum clean
-RUN yum purge
+RUN apt-get clean
+RUN apt-get purge
 
 USER $USERNAME
