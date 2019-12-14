@@ -75,7 +75,7 @@ RUN $INST_SCRIPTS/no_vnc.sh
 
 ### Install firefox and chrome browser
 RUN $INST_SCRIPTS/firefox.sh
-RUN  $INST_SCRIPTS/chrome.sh
+RUN apt install -y --assume-yes chromium-browser
 
 ### Install xfce UI
 RUN $INST_SCRIPTS/xfce_ui.sh
