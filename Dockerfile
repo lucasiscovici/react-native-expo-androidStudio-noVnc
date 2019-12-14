@@ -12,7 +12,7 @@ RUN yum -y update; yum clean all
 RUN yum -y install epel-release; yum clean all
 RUN yum -y install nodejs npm; yum clean all
 
-USER $USERNAME
+
 
 EXPOSE 8080
 EXPOSE 19000
@@ -65,3 +65,5 @@ RUN yum install -y libz1 libncurses5 libbz2-1.0:i386 libstdc++6 libbz2-1.0 lib32
 # Clean up
 RUN yum clean
 RUN yum purge
+
+USER $USERNAME
