@@ -75,7 +75,7 @@ RUN $INST_SCRIPTS/no_vnc.sh
 
 ### Install firefox and chrome browser
 RUN $INST_SCRIPTS/firefox.sh
-RUN dpkg --force depends -P lxd &&  dpkg --force depends -P lxd-client && apt upgrade && apt-get install -y --assume-yes chromium-browser
+RUN dpkg --force -y depends -P lxd &&  dpkg --force -y depends -P lxd-client && apt upgrade && apt-get install -y --assume-yes chromium-browser
 
 ### Install xfce UI
 RUN $INST_SCRIPTS/xfce_ui.sh
