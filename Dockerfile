@@ -77,7 +77,8 @@ RUN $INST_SCRIPTS/no_vnc.sh
 RUN $INST_SCRIPTS/firefox.sh
 RUN dpkg --force depends -P lxd 
 RUN dpkg --force depends -P lxd-client 
-RUN apt-get upgrade && apt-get install -y --assume-yes chromium-browser
+RUN apt-get upgrade
+RUN apt-get install -y --assume-yes chromium-browser
 
 ### Install xfce UI
 RUN $INST_SCRIPTS/xfce_ui.sh
