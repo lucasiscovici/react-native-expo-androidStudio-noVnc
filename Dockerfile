@@ -5,7 +5,7 @@ ENV REFRESHED_AT 2019-01-11
 USER 0
 ENV USERNAME dev
 RUN groupadd --gid 1000 node \
-  && useradd --gid node -rm -d /home/dev -s /bin/bash -g root -G sudo -u 1005 ${USERNAME}
+  && useradd --gid node -rm -d /home/dev -s /bin/bash -g root -u 1005 ${USERNAME}
 
 USER $USERNAME
 
