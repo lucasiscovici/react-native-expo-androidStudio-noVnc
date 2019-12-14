@@ -36,7 +36,7 @@ ENV NPM_CONFIG_PREFIX="/home/$USERNAME/.npm-global"
 
 RUN mkdir -p ~/src \
     && mkdir ~/.npm-global \
-    && npm install expo-cli --global
+    && npm install --unsafe-perm expo-cli --global
 
 #append the .npm-global to path, other wise globally installed packages 
 #will not be available in bash
