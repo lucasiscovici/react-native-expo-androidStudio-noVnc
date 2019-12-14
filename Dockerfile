@@ -2,7 +2,7 @@ FROM consol/centos-xfce-vnc
 ENV REFRESHED_AT 2019-01-11
 
 # Switch to root user to install additional software
-
+USER 0
 ENV USERNAME dev
 RUN groupadd --gid 1000 node \
   && useradd --gid node -rm -d /home/dev -s /bin/bash -g root -G sudo -u 1005 ${USERNAME}
