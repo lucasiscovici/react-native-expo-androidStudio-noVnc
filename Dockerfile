@@ -75,8 +75,8 @@ RUN $INST_SCRIPTS/no_vnc.sh
 
 ### Install firefox and chrome browser
 RUN $INST_SCRIPTS/firefox.sh
-RUN apt-get install -y snapd
-RUN apt install chromium chromium-l10n
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && dpkg -i google-chrome-stable_current_amd64.deb
+
 
 ### Install xfce UI
 RUN $INST_SCRIPTS/xfce_ui.sh
