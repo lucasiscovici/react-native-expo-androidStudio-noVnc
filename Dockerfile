@@ -80,11 +80,11 @@ RUN apt-get install -y fonts-liberation xdg-utils && wget https://dl.google.com/
 
 ### Install xfce UI
 RUN $INST_SCRIPTS/xfce_ui.sh
-ADD ./src/common/xfce/ $HOME/
+ADD ./docker-headless-vnc-container/src/common/xfce/ $HOME/
 
 ### configure startup
 RUN $INST_SCRIPTS/libnss_wrapper.sh
-ADD ./src/common/scripts $STARTUPDIR
+ADD ./docker-headless-vnc-container/src/common/scripts $STARTUPDIR
 RUN $INST_SCRIPTS/set_user_permission.sh $STARTUPDIR $HOME
 
 USER $USERNAME
